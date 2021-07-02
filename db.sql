@@ -1,5 +1,5 @@
+drop database if exists database purevegi;
 create database purevegi;
-drop database purevegi;
 use purevegi;
 
 create table buyers_details(
