@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="col-5 mx-auto shadow-sm p-3 mb-5 bg-body rounded">
+
+        <div>
+            <nav class="navbar navbar-light bg-light" style="border-radius: 10px;">
+                <div class="container-fluid">
+                    <a class="navbar-brand mx-auto" href="#">
+                        <img src="../../../../assets/img/logo.png" alt="" width="60" height="60"
+                            class="d-inline-block align-text-top">
+
+                    </a>
+                </div>
+            </nav>
+            <h1 style="text-align: center;font-family: 'Kiwi Maru', serif;margin-top: 50px;">
+                Sign in
+            </h1>
+            <div class="row">
+                <div class="col-9 mx-auto" style="padding-top: 30px;">
+                    <form [formGroup]="login">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Contact Number</mat-label>
+                            <input matInput placeholder="Placeholder" type="number" formControlName="userName" required>
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>password</mat-label>
+                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" >
+                            <mat-label>user type</mat-label>
+                            <mat-select formControlName="user_type" required>
+                              <mat-option value="Seller">Seller</mat-option>
+                              <mat-option value="Buyer">Buyer</mat-option>
+                      
+                            </mat-select>
+                          </mat-form-field>
+                        
+                        <div class="row" style="padding-top: 10px;text-align: center;">
+                            <button (click)="login_user()" class="btn btn-outline btn-success mx-auto btn-block" style="max-width: 95%;"
+                                [disabled]="!login.valid"
+                            >
+                          Sign in
+                          <!-- <mat-spinner [diameter]="20"></mat-spinner> -->
+                            </button>
+
+                        </div>
+                        
+                    </form>
+                    <div *ngIf="errorFound" class="alert alert-danger" style="font-size: 13px;width: 100%;margin-top: 20px;">
+                        {{message}}
+                      </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        
+    </div>
+</div>

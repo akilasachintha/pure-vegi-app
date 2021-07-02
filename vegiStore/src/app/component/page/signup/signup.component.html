@@ -1,0 +1,104 @@
+<div class="container-fluid">
+    <div class="col-5 mx-auto shadow-sm p-3 mb-5 bg-body rounded">
+        
+          <div>
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                  <a class="navbar-brand mx-auto" href="#">
+                    <img src="../../../../assets/img/logo.png" alt="" width="60" height="60" class="d-inline-block align-text-top">
+                    
+                  </a>
+                </div>
+              </nav>
+              <h1 style="text-align: center;font-family: 'Kiwi Maru', serif;">
+                  Sign up
+              </h1>
+          </div>
+          <mat-vertical-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+              <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Select your user type</ng-template>
+                <!-- <mat-form-field>
+                  <mat-label>Name</mat-label>
+                  <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                </mat-form-field> -->
+                <mat-form-field appearance="outline" >
+                  <mat-label>user type</mat-label>
+                  <mat-select formControlName="firstCtrl" required>
+                    <mat-option value="Seller">Seller</mat-option>
+                    <mat-option value="Buyer">Buyer</mat-option>
+            
+                  </mat-select>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup">
+              <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel >Fill out your details</ng-template>
+                <mat-form-field appearance="outline">
+                  <mat-label>Name</mat-label>
+                  <input matInput formControlName="sName" placeholder="Ex. 1 Main St, New York, NY"
+                         required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>District </mat-label>
+                  <input matInput formControlName="sdistrict" placeholder="Ex. 1 Main St, New York, NY"
+                         required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Address</mat-label>
+                  <input matInput formControlName="sAddress" placeholder="Ex. 1 Main St, New York, NY"
+                         required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Contact No</mat-label>
+                  <input matInput formControlName="sContact" placeholder="Ex. 1 Main St, New York, NY"
+                         required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'" formControlName="sPassword" required>
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Confirm password</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'"  formControlName="sCPassword" required>
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+                <div *ngIf="!secondFormGroup.controls.sCPassword.valid && secondFormGroup.controls.sCPassword.touched" class="alert  alert-danger" style="font-size: 13px;">
+                  passwords are not match
+                </div>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Done</ng-template>
+              <p>To finished submit your data.</p>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="register_user()">Submit Data</button>
+              </div>
+            </mat-step>
+          </mat-vertical-stepper>
+          <div *ngIf="errorFound" class="alert alert-danger" style="font-size: 13px;">
+            {{message}}
+          </div>
+
+          <div *ngIf="is_success" class="alert alert-success" style="font-size: 13px;text-align: center;">
+            You are successfuly registered with PURE VEGI. <br> 
+            <a   [routerLink]="['../signin']" >
+              Sign in
+            </a>
+          </div>
+    </div>
+</div>

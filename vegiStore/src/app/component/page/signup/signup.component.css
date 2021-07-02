@@ -1,0 +1,10 @@
+mat-form-field{
+    padding-left: 10px;
+    width: 100%;
+    max-width: 49%;
+    font-size: 13px;
+    font-family: 'Kiwi Maru', serif;
+}
+mat-step{
+    font-family: 'Kiwi Maru', serif;
+}

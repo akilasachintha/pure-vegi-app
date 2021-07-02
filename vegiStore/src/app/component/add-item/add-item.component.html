@@ -1,0 +1,103 @@
+<div class="row" style="padding: 10px;">
+    <div class="card ">
+        <div class="card-body">
+            <form  [formGroup]="firstFormGroup">  
+
+            <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="" required formControlName="name" >
+                <mat-icon matSuffix>credit_card</mat-icon>
+              </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Price (1kg)</mat-label>
+                <input matInput type="number" placeholder="" required formControlName="price" >
+                <mat-icon matSuffix>attach_money</mat-icon>
+              </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Quantity (kg)</mat-label>
+                <input matInput type="number" placeholder="" required formControlName="quantity" >
+                <mat-icon matSuffix>assignment</mat-icon>
+              </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Quality</mat-label>
+                <input matInput placeholder="" required formControlName="quality" >
+                <mat-icon matSuffix>assessment</mat-icon>
+
+                
+              </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Expiration Data</mat-label>
+                <input matInput [matDatepicker]="picker" required formControlName="edate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+
+                <mat-label>Manufacture Date</mat-label>
+                <input matInput [matDatepicker]="picker1" required formControlName="mdate">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+
+               
+              </mat-form-field>
+
+              <div class="row" style="padding: 50px;width: 100%;">
+                <div style="padding-bottom: 10px;">
+                    <p class="uplaodText" style="color: rgba(0, 0, 0, 0.768);">Item image
+                    </p>
+                </div>
+                <mat-list style="width: 100%;">
+                    <mat-list-item>
+                        <div class="row" style="width: 100%;height: 100%;margin: auto;margin-top: 0px;">
+                            <input matRipple matRippleColor="primary" formControlName="image" type="file" name="image"
+                                (change)="fileProgress($event)" required />
+                        </div>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+        
+                    <div class="row" style="width: 100%;height: 100%;margin: auto;margin-top: 0px;">
+                        <div class="image-preview">
+                            <img [src]="previewUrl" height="300" />
+                        </div>
+                    </div>
+        
+        
+                    <mat-divider></mat-divider>
+        
+                </mat-list>
+        
+        
+        
+                <div *ngIf="fileUploadProgress">
+                    Upload progress: {{ fileUploadProgress }}
+                </div>
+        
+                <div class="mb-3" *ngIf="uploadedFilePath">
+                    {{uploadedFilePath}}
+                </div>
+        
+            </div>
+            </form>
+            <button class="btn btn-success" (click)="add_item()" [disabled]="!firstFormGroup.valid" >
+                Add Item
+            </button>
+
+            <!-- <button class="btn btn-success" (click)="add_item()"  >
+                Add Item
+            </button> -->
+        </div>
+        <div *ngIf="errorFound" class="alert alert-danger" style="font-size: 13px;">
+            {{message}}
+          </div>
+
+          <div *ngIf="is_success" class="alert alert-success" style="font-size: 13px;text-align: center;">
+            Item successfuly Added. <br> 
+            
+          </div>
+      </div>
+</div>

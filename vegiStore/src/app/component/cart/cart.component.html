@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="col-10 mx-auto">
+        <div class="row" style="padding: 20px;">
+            <div class="card ">
+                <div class="card-body">
+                 <button (click)="getData()" class="btn btn-success">
+                  Refresh
+                 </button>
+        
+        
+                </div>
+              </div>
+        </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Item Code</th>
+                <th scope="col">Price(1kg)</th>
+                <th scope="col">UQuantity</th>
+                <th scope="col">Image</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+              <tr *ngFor="let item of mycart">
+                <th scope="row">{{item.item_code}}</th>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.uquantity}}</td>
+                
+                <td>
+                  <img [src]="_service.url+item.image" width="50px" >
+                </td>
+                <td>
+                  <button class="btn btn-danger" >
+                    Remove
+                  </button>
+                </td>
+              </tr>
+             
+            </tbody>
+          </table>
+        
+          
+    </div>
+</div>
