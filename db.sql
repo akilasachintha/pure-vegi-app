@@ -1,4 +1,4 @@
-drop database if exists database purevegi;
+drop database if exists purevegi;
 create database purevegi;
 use purevegi;
 
