@@ -1,4 +1,5 @@
 create database purevegi;
+drop database purevegi;
 use purevegi;
 
 create table buyers_details(
@@ -35,4 +36,6 @@ create table item(
 drop table item;
 
 select * from item;
+select * from seller_details;
+select * from buyer_details;
 
